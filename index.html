@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun with api</title>
+    <style>
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 30px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px gray;
+            padding: 5px 10px;
+        }
+
+        nav {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Index</a>
+        <a href="whoAmI.html">who Am I</a>
+        
+    </nav>
+
+    <h1 id="activity"></h1>
+    <h3>Learn from: <a id="link" href="#">Visit this place</a></h3>
+    <script>
+        // document.getElementById('link').addEventListener('click', activity)
+
+        function activity() {
+            fetch('http://www.boredapi.com/api/activity/')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('activity').innerText = data.activity;
+                })
+            setTimeout(() => {
+                activity();
+            }, 5000);
+        }
+        activity()
+        // setInterval(() => {
+        //     activity();
+        // }, 5000);
+
+
+        // 
+        //     {
+        //     document.getElementById('activity').innerText=data.activity;
+
+        //     })
+    </script>
+</body>
+
+</html>
